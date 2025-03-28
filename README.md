@@ -7,22 +7,76 @@ O arquivo `lab1.tar.gz` contém uma base de dados de dígitos manuscritos e dois
 
 📌 **Passo inicial:** Descompacte o arquivo na sua área `/nobackup` para evitar problemas de quota.
 
----
 
-## 📝 Extração de Características
+## 📂 Extraindo o Arquivo `digits.py` no Terminal e Gerando as Features
 
-O script `digits.py` extrai a representação mais simples possível de uma base de dados de dígitos manuscritos:
+### 🎯 Passo a Passo
 
-- Para cada posição da imagem, verifica-se a intensidade do pixel.
-- Se o valor for > 128, a característica é igual a 1; caso contrário, 0.
-- Como os classificadores precisam de um vetor de tamanho fixo, as imagens são normalizadas utilizando as variáveis `X` e `Y` dentro da função `rawpixel`.
-- Após a execução do programa, um arquivo chamado `features.txt` é criado, contendo 2000 linhas no formato:
-  ```
-  0 0 0 1 1
-  ```
-  O primeiro número indica o rótulo da classe, seguido pelos valores das características.
+### 1️⃣ Descompactando o Arquivo `lab1.tar.gz`
+Antes de tudo, mova o arquivo `lab1.tar.gz` para o diretório onde deseja trabalhar. Depois, execute o seguinte comando no terminal:
 
----
+```bash
+# Descompactar o arquivo na pasta /nobackup para evitar problemas de quota
+cd /nobackup  # Ou outro diretório de sua preferência
+tar -xzvf lab1.tar.gz
+```
+
+Isso criará uma pasta contendo o script `digits.py` e outros arquivos necessários.
+
+
+### 2️⃣ Executando o `digits.py` para Gerar as Features
+Após a extração, navegue até o diretório onde `digits.py` está localizado e execute o seguinte comando para gerar as features:
+
+```bash
+python3 digits.py features.txt 8 8
+```
+
+📌 **Explicação dos parâmetros:**
+- `features.txt` → Nome do arquivo onde os dados serão salvos.
+- `8 8` → Define a resolução das imagens (pode ser alterado, por exemplo, para `16 16`).
+
+Se a execução for bem-sucedida, uma saída semelhante a esta será exibida:
+
+```bash
+8 8
+Loading images...
+Extracting dummy features
+Done!
+```
+
+
+### 3️⃣ Verificando a Extração das Features
+Após a execução, verifique se o arquivo `features.txt` foi criado corretamente:
+
+```bash
+ls -lh | grep features.txt
+```
+
+Para visualizar as primeiras linhas do arquivo, use:
+
+```bash
+head -n 5 features.txt
+```
+
+A saída deve conter valores binários (0s e 1s) organizados em colunas:
+
+```txt
+0 0 0 1 1 0 1 0 ...
+1 1 0 0 1 1 0 1 ...
+...
+```
+
+Agora você já extraiu as features com sucesso! 🎉
+
+Se precisar gerar um novo conjunto de features com outra resolução, basta mudar os valores de `X` e `Y` no comando:
+
+```bash
+python3 digits.py features_16x16.txt 16 16
+```
+
+🔹 **Pronto para seguir para a próxima etapa!** 🚀
+
+
 
 ## 🔬 Experimento
 
