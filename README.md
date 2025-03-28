@@ -82,7 +82,7 @@ python3 digits.py features_16x16.txt 16 16
 
 ### 🏗️ Etapas do Processo
 
-1. **Carregar os dados do **``**.**
+1. **Carregar os dados.**
 2. **Dividir em 50% para treinamento e 50% para validação.**
 3. **Aplicar o k-NN (k=3) com distância Euclidiana.**
 4. **Avaliar o desempenho e identificar a melhor e a pior representação.**
